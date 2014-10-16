@@ -1,0 +1,36 @@
+%###########################################################################
+%
+%   Anhang
+%
+%###########################################################################
+\begin{appendix}
+\chapter*{Anhang}
+\addcontentsline{toc}{chapter}{Anhang}
+\setcounter{chapter}{1} % beginnt chapter bei 1 (=A) zu nummerieren
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}} % verhindert dass ab hier subsections ins Inhaltsverzeichnis aufgenommen werden
+\markboth{\uppercase{Anhang}}{} % Kopfzeile beschriften
+
+%###########################################################################
+%   Anhang A.1
+%###########################################################################
+\newpage
+\section{Inhalt der CD-ROM}
+Die beigelegte CD-ROM enth"alt in der obersten Dateistruktur die Eintr"age
+
+\begin{itemize}
+\item \textbf{DA\_Sieber.pdf}: die Pdf-Datei zur Diplomarbeit.
+%
+\item \textbf{DA\_Sieber/}: ein Verzeichnis mit den TEX-Dateien des in
+Latex verfassten Berichtes zur Diplomarbeit sowie alle
+dazugeh\"origen Grafiken und Quellcodest"ucke.
+% 
+\item \textbf{DATA/}: ein Verzeichnis mit den f"ur diese Arbeit
+relevanten Daten, Hilfsprogrammen, Skripts und Simulationsumgebungen.
+%
+\end{itemize} 
+
+Zus"atzliche Informationen stehen in den readme.txt-Dateien der
+jeweiligen Verzeichnisse zur Verf"ugung.
+
+%###########################################################################
+\end{appendix}

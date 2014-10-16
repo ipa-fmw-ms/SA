@@ -1,0 +1,293 @@
+%##########################################################################
+%                                                                     
+%                         Studienarbeit                             
+%                                                                  
+%                         Maximilian Sieber      
+%                         
+%      										2014                                       
+%                                     
+%##########################################################################
+
+
+%##########################################################################
+% Formatierungsoptionen
+% fuer Bilder die Option "draft" entfernen
+\documentclass[12pt,twoside]{report}
+
+% Standard Style-Files
+\usepackage{german}
+\usepackage{a4}
+%\usepackage{psfig}
+\usepackage{graphicx}
+\usepackage{subfigure}
+%\usepackage{equations}
+\usepackage{thb}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage{color}
+
+% Abruerzungsverzeichnis
+\usepackage{nomencl}
+
+\usepackage{multicol}
+% Metadaten
+\newcommand{\Author}{Maximilian Sieber} 
+\newcommand{\Title}{Studentische Arbeit}
+\newcommand{\Subject}{Entwicklung einer Webapplikation zur automatischen Verteilung von G"utern}
+\newcommand{\Keywords}{ROS, Logistik, rocon, Servicrobotik}
+
+
+%\usepackage{titling} %crap
+
+% Hyperlinks
+\usepackage[bookmarksnumbered=true,backref=page,breaklinks=true,
+pdfauthor={\Author},pdfsubject={\Subject},
+pdfkeywords={\Keywords}]{hyperref}
+
+
+% Seitenstil
+\pagestyle{headings}
+%
+% Abstand zwischen Abs"atzen
+\setlength{\parskip}{1.5ex}
+
+% Einr"uckung der ersten Zeile eines Absatzes unterdr"ucken
+\setlength{\parindent}{0pt}
+
+% Grosszuegigere Wortabstaende
+\sloppy
+
+% Tiefe der numerierten Kapitel definieren
+\setcounter{secnumdepth}{3}
+
+% Tiefe der Kapitel im Inahltsverzeichnis definieren
+\setcounter{tocdepth}{2}
+
+
+% Damit Bilder m"oglichst da sind, wo man sie will
+\setcounter{topnumber}{20}
+\setcounter{bottomnumber}{20}
+\setcounter{totalnumber}{20}
+\renewcommand{\topfraction}{.9999}
+\renewcommand{\bottomfraction}{.9999}
+\renewcommand{\textfraction}{0}
+
+
+%##########################################################################
+% Bilder: (14, 10, 7), 7, 4.6 bzw insgesamt 0.95\textwidth: (0.95, 0.75, 0.5), 0.475, 0.317
+% flopicture
+\newcommand{\flopicture}[5]{
+\begin{figure}[hbtp]
+  \centerline{\includegraphics[angle=#4,width=#5\textwidth]{../Bilder/#1}}
+  \caption{#2\label{#3}}
+\end{figure}}
+% Aufruf mit \flopicture{file}{caption}{label}{angle}{width}
+
+% flopicturezwei 7cm
+\newcommand{\flopicturezwei}[6]{
+\begin{figure}[hbtp]
+  \centering
+	\subfigure[#4]{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#1}}
+	\subfigure[#5]{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#2}}
+  \caption{#3\label{#6}}
+\end{figure}}
+% Aufruf mit \flopicturezwei{file1}{file2}{caption}{caption1}{caption2}{label}
+
+% flopicturedrei 4.6cm
+\newcommand{\flopicturedrei}[8]{
+\begin{figure}[hbtp]
+  \centering
+	\subfigure[#5]{
+    	\includegraphics[width=0.317\textwidth]{../Bilder/#1}}
+	\subfigure[#6]{
+    	\includegraphics[width=0.317\textwidth]{../Bilder/#2}}
+  \subfigure[#7]{
+    	\includegraphics[width=0.317\textwidth]{../Bilder/#3}}
+  \caption{#4\label{#8}}
+\end{figure}}
+% Aufruf mit \flopicturedrei{file1}{file2}{file3}{caption}{caption1}{caption2}{caption3}{label}
+
+% flopicturezweizwei
+\newcommand{\flopicturezweizwei}[6]{
+\begin{figure}[hbtp]
+  \centering
+	\subfigure{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#1}}
+	\subfigure{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#2}}
+	\\ %new line
+  \subfigure{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#3}}
+  \subfigure{
+    	\includegraphics[width=0.475\textwidth]{../Bilder/#4}}
+  \caption{#5\label{#6}}
+\end{figure}}
+% Aufruf mit \flopicturezweizwei{file1}{file2}{file3}{file4}{caption}{label}
+
+%##########################################################################
+% Tabellen:
+
+% Gleitende Tabelle:
+\newcommand{\mytable}[3]{
+\begin{table}[hbtp]
+  \caption{#2\label{#3}}
+  \vskip 0.5cm
+  \centerline{#1}
+\end{table}
+}%newcommand%
+% Aufruf mit \mytable{tabelle}{caption}{label}
+% Breite muss auf insgesamt 0.95\textwidth kommen
+
+\renewcommand\lstlistingname{Quellcode}
+\renewcommand\lstlistlistingname{Quellcodeverzeichnis}
+
+\definecolor{darkblue}{rgb}{0,0,.6}
+\definecolor{darkred}{rgb}{.6,0,0}
+\definecolor{darkgreen}{rgb}{0,.6,0}
+\definecolor{paperwhite}{rgb}{0.999,0.999,0.999}
+
+%Quellcode
+\newcommand{\flocode}[3]{
+\vskip 0.5cm
+\lstinputlisting[language=C++, caption={#2}, captionpos=b, label={#3}, breaklines=true, showstringspaces=false, numbers=left,tabsize=2, frame=single, basicstyle=\scriptsize, commentstyle=\itshape\color{darkgreen}, keywordstyle=\bfseries\color{darkblue}, stringstyle=\color{darkred}, float=hbtp]{../Code/#1} 
+}
+% Code in Floatumgebung ohne Umbruch
+% Aufruf mit \flocode{Datei}{caption}{label}
+
+\newcommand{\flocodeApp}[3]{
+\vskip 0.5cm
+\lstinputlisting[language=C++, caption={#2}, captionpos=b, label={#3}, breaklines=true, showstringspaces=false, numbers=left,tabsize=2, frame=single, basicstyle=\scriptsize, commentstyle=\itshape\color{darkgreen}, keywordstyle=\bfseries\color{darkblue}, stringstyle=\color{darkred}]{../Code/#1} 
+}
+% Code ohne Floatumgebung mit Umbruch
+% Aufruf mit \flocodeApp{Datei}{caption}{label}
+
+
+%##########################################################################
+% Literatur--Referenzen:
+
+% im Text
+\newcommand{\mycite}[2]{\mbox{\sc #1} \cite{#2}}
+% Aufruf mit \mycite{author}{label}
+
+% in "Uberschriften von Bildern
+\newcommand{\mycaptioncite}[2]{{\sc #1} \protect\cite{#2}}
+% Aufruf mit \mycaptioncite{author}{label}
+
+
+%##########################################################################
+% Gleichungs--Referenzen:
+
+% im Text
+\newcommand{\refeqn}[1]{(\ref{#1})}
+% Aufruf mit \refeqn{label}
+
+
+%##########################################################################
+% Mathematischer Modus 
+
+% Masseinheiten
+\newcommand{\meh}[1]{~\mbox{#1}}
+% Aufruf mit \meh{einheit}
+
+% Zahlenmengen
+\newcommand{\realR}{{\Bbb{R}}}
+\newcommand{\integerN}{{\Bbb{N}}}
+\newcommand{\complexC}{{\Bbb{C}}}
+% Aufruf mit \realR, \integerN und \complexC
+
+%##########################################################################
+% Abkuerzungen 
+\let\abbrev\nomenclature
+\renewcommand{\nomname}{Abk"urzungsverzeichnis} 
+\setlength{\nomlabelwidth}{.24\hsize} % Punkte zw. Abkürzung und Erklärung
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+%\setlength{\nomitemsep}{-\parsep} % Zeilenabstände verkleinern
+\makenomenclature 
+% einfuegen mit \abbrev{Abkuerzung}{Beschreibung}
+
+
+%###########################################################################
+% Bearbeitung von einzelnen Kapiteln
+
+%\includeonly{berichttitle}
+%\includeonly{berichttoc}
+%\includeonly{bericht1}
+%\includeonly{bericht2}
+%\includeonly{bericht3}
+%\includeonly{bericht4}
+%\includeonly{bericht5}
+%\includeonly{berichtapp}
+%\includeonly{berichtlof}
+%\includeonly{berichtloc}
+%\includeonly{berichtlot}
+%\includeonly{berichtbib}
+
+
+%###########################################################################
+\begin{document}
+
+% Titelseite einfügen
+\include{berichttitle}
+\thispagestyle{empty}\cleardoublepage % Inhalt auf der rechten Seite beginnen
+
+% Raendereinstellungen fuer Doppelseitigen Ausdruck
+\evensidemargin=2pt
+\oddsidemargin=40pt
+
+% Zeilenabstand strecken
+\renewcommand{\baselinestretch}{1.15}\normalsize
+
+
+
+
+% Zitat einfügen
+\include{berichtzit}
+\thispagestyle{empty}\cleardoublepage
+
+\pagenumbering{roman}
+
+% Inhaltsverzeichnis einfügen
+\include{berichttoc}
+\thispagestyle{empty}\cleardoublepage
+
+% Eidesstattliche Erklärung einfügen
+\include{berichterkl}
+\thispagestyle{empty}\cleardoublepage
+
+% Vorwort einfügen
+\include{berichtvor}
+\thispagestyle{empty}\cleardoublepage
+
+% Abkürzungsverzeichnis einfügen
+\include{berichtnom}
+\thispagestyle{empty}\cleardoublepage
+
+% Kapitel einfügen
+\pagenumbering{arabic}
+\include{bericht1}
+\include{bericht2}
+\include{bericht3}
+%\include{bericht4}
+%\include{bericht5}
+
+\include{berichtapp} % Anhang einfügen
+\thispagestyle{empty}\cleardoublepage
+\include{berichtlof} % Abbildungsverzeichnis einfügen
+\thispagestyle{empty}\cleardoublepage
+\include{berichtloc} % Quellcodeverzeichnis einfügen
+\thispagestyle{empty}\cleardoublepage
+\include{berichtlot} % Tabellenverzeichnis einfügen
+\thispagestyle{empty}\cleardoublepage
+
+% Literaturverzeichnis einfügen
+\phantomsection
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%\include{berichtbib_alt}
+\bibliographystyle{plaindin}
+\bibliography{berichtbib}
+
+
+\end{document}
+%##########################################################################
