@@ -3,27 +3,70 @@
 %   Kapitel X
 %
 %###########################################################################
-\chapter{Anforderungsdefinition} \label{Kap:2}
+\chapter{Anforderungsdefinition} \label{Kap:3}
 
 
 %###########################################################################
 %   Kapitel 2.1
 %###########################################################################
-\section{Use-Case Analyse}
+\section{Zielbestimmung}
+\vspace{0pt}
+Ziel dieser Arbeit ist, eine automatisierte Verteilung von Gütern mit Hilfe mobiler Service Robotern zu entwickeln.
+Dabei soll es möglich sein, Bestellungen dezentral über eine Website aufzugeben.
+Die Aufgabe der Roboter ist dann, von einer spezifizierten Aufnahmeposition ein Gut, beispielsweise ein Getränk, ein Snack, die Hauspost oder einen Büroartikel aufzunehmen,
+und damit zu der bestellenden Person zu fahren. ....
+\newpage
 
-
-
-\begin{center}
-\begin{tabular}{ c | c | c  } 
- User & Server & Roboter \\ [0.5ex] 
+\section{User-Story}
+\begin{table}[!ht]%annoying floats
+\begin{tabular}{p{40mm}|p{45mm}|p{55mm}} 
+ User & Roboter & Server \\
 \hline \hline
-Besucht Webseite &  & Stellt Seite\\ 
+Ruft Webseite auf & & Übermittelt Inhalt\\
 \hline
-Meldet sich an & & L"adt Benutzerdaten \\ 
+Meldet Sich an & & Karte und Konto werden übertragen\\
 \hline
-& Bringt Waren & \\
-\hline \hline
-
+Wählt Produkt aus & &\\
+\hline
+Wählt Zielort aus & & \\
+\hline
+Gibt Bestellung auf & & Nimmt Bestellung an\\
+\hline
+Wartet auf Gut & & erstellt Auftrag in Warteschlange\\
+\hline
+& Beendet letzten Auftrag & Übermittelt nächsten Auftrag von der Warteschalange\\
+\hline
+& Fährt Aufnahmeposition an &\\
+\hline
+& Nimmt Gut auf &\\
+\hline
+& Navigiert zum Ziel &\\
+\hline
+& Navigiert eventuell zum alternativem Ziel &\\
+\hline
+Nimmt Gut entgegen & Übergibt Gut & \\
+\hline
+Bestätigt Erhalt & Übermittelt Auftragsergebnis & Vergibt neuen Auftrag\\
 \end{tabular}
-\end{center}
+%\caption{User-Story für den Bestellvorgang}
+\label{fig:user-story}
+\end{table}
 
+\section{Use-Case}
+\begin{figure}[!ht]
+\begin{tikzpicture}
+\begin{umlsystem}{Server}
+\umlusecase[x=-3]{Bestellung aufgeben}
+\umlusecase[x=3]{Auftrag senden}
+\end{umlsystem}
+
+\umlactor[x=-8]{User}
+\umlactor[x=8]{Roboter}
+
+\umlassoc{User}{usecase-1}
+\umlassoc{Roboter}{usecase-2}
+
+\end{tikzpicture}
+\caption{Use-Case Diagramm für den Bestellvorgang}
+\label{fig:use-case}
+\end{figure}
