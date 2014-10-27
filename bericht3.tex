@@ -9,15 +9,10 @@
 %###########################################################################
 %   Kapitel 2.1
 %###########################################################################
-\section{Zielbestimmung}
-\vspace{0pt}
-Ziel dieser Arbeit ist, eine automatisierte Verteilung von Gütern mit Hilfe mobiler Service Robotern zu entwickeln.
-Dabei soll es möglich sein, Bestellungen dezentral über eine Website aufzugeben.
-Die Aufgabe der Roboter ist dann, von einer spezifizierten Aufnahmeposition ein Gut, beispielsweise ein Getränk, ein Snack, die Hauspost oder einen Büroartikel aufzunehmen,
-und damit zu der bestellenden Person zu fahren. ....
-\newpage
+
 
 \section{User-Story}
+
 \begin{table}[!ht]%annoying floats
 \begin{tabular}{p{40mm}|p{45mm}|p{55mm}} 
  User & Roboter & Server \\
@@ -48,7 +43,7 @@ Nimmt Gut entgegen & Übergibt Gut & \\
 \hline
 Bestätigt Erhalt & Übermittelt Auftragsergebnis & Vergibt neuen Auftrag\\
 \end{tabular}
-%\caption{User-Story für den Bestellvorgang}
+\caption{User-Story für den Bestellvorgang}
 \label{fig:user-story}
 \end{table}
 
@@ -70,3 +65,35 @@ Bestätigt Erhalt & Übermittelt Auftragsergebnis & Vergibt neuen Auftrag\\
 \caption{Use-Case Diagramm für den Bestellvorgang}
 \label{fig:use-case}
 \end{figure}
+
+\section{Anforderungsdefinition}
+Aus dem Anwendungsfalldiagram aun der Ablaufliste, werden für jede einzelne Komponente Die funktionalen und nichtfunktionalen Anforderungen definiert
+\subsection{Funktionale Anforderungen}
+Ein neuer Benutzer soll sich registrieren können.\\
+Ein Benutzer kann ein Gut an eine Position bestellen.\\
+Die Karte Zeigt die aktuelle Position der Roboter an.\\
+Der Status der Roboter wird angezeigt.\\
+Die Zielräume sind auf der Karte per Maus auswählbar.\\
+Die Güter sind via Drop-Down Menü oder  Katalog auswählbar.\\
+Das Auftragsmanagement enthält eine Vorrangwarteschlange. \\
+Es wird eine reduzierte Warteschlange der Aufträge angezeigt.\\
+Es soll verschiedene Prioritäten für Benutzer geben.\\
+Ein Administrator kann die Priorität der Benutzer ändern.\\
+Wird das Gut ausgeliefert oder es tritt ein Fehler auf erscheint ein Feedback.\\
+Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.\\
+Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.\\
+Wird das Gut nicht benötigt, wird es zurück gebracht.\\
+Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.\\
+Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.\\
+\subsection{Nichtfunktionale Anforderungen}\\
+Das System wird für ROS (Robot Operating System) Implementiert.\\
+Ein Auftrag kann die Zustände Wartend, Ausführend oder Abgebrochen haben.\\
+Die Umgebung und die Karte dürfen nur einstöckig sein.\\
+Die Webseite muss auf modernen Smartphones und PCs funktionieren.\\
+Auf die Verfügbarkeit der Produkte muss nicht geachtet werden.\\
+Die Koordinaten der Räume und Aufnahmepositionen werden manuell definiert.\\
+Der Roboter muss die Produkte aufnehmen können (automatisch oder manuell)\\
+Der Roboter muss eine erfolgreiche Auslieferung erkennen können. (manuell)\\
+
+
+
