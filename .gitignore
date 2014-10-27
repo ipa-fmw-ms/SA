@@ -1,6 +1,9 @@
 *.aux
 *.out
 *.nlo
+*.png
+*.dvi
+*.png
 *.to*
 *.b*
 *.lo*
