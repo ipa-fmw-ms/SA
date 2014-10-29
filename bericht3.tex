@@ -68,29 +68,34 @@ Bestätigt Erhalt & Übermittelt Auftragsergebnis & Vergibt neuen Auftrag\\
 
 \section{Anforderungsdefinition}
 Aus dem Anwendungsfalldiagram und der Ablaufliste, werden für jede einzelne Komponente Die funktionalen (LFA) und nichtfunktionalen Anforderungen (NFA) definiert.
-Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfüllung der wesentlichen Aufgabe benötigt werden, aber den grad der Automatsierung erhöhen.% könnten.
+Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfüllung der wesentlichen Aufgabe benötigt werden, jedoch den grad der Automatsierung erhöhen.% könnten.
 
 \subsection{Anforderungen an das User Managment}
 \begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{LFA \textbf{\theenumi.}}
+\renewcommand{\labelenumi}{ULFA \textbf{\theenumi.}}
 \item Ein neuer User Soll sich registrieren und löschen können.
 \item Ein Administrator soll die Prioritäten der User verändern können.
 %\item Die Priorität der User beeinflusst die Abarbeitung der Warteschlange. (noch festzulegen)
-\item[WFA \textbf{\theenumi.}] Der User kann eine default Lieferposition festlegen.
+\item[WFA \textbf{\theenumi.}] Der User kann eine default Lieferposition mit Alternativpositionfestlegen.
 \end{enumerate}
 
 \subsection{Anforderungen an das Auftragsmanagement}
 \begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{LFA \textbf{\theenumi.}}
+\renewcommand{\labelenumi}{ALFA \textbf{\theenumi.}}
 \item Ein User kann ein gut an eine Position bestellen.
-\item Ein Auftrag kann die Zustände Warten Ausführen oder Abgebrochen haben.
+\item Ein Auftrag kann die Zustände Wartend Ausführend oder Abgebrochen haben.
 \item Die Priorität der User beeinflusst die Abarbeitung der Warteschlange. (noch festzulegen)
-\item[WFA \textbf{\theenumi.}] Der User kann eine default Lieferposition festlegen.
+\item Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.
+\item Wird keine Lieferposition erreicht, wird der Auftrag abgebrochen.
+\item Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.
+\item[WAFA \textbf{\theenumi.}]Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.
+\item Wird das Gut nicht benötigt, wird es zurück gebracht.
+\item Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.
 \end{enumerate}
 
 \subsection{Anforderungen an das Webinterface}
 \begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{LFA \textbf{\theenumi.}}
+\renewcommand{\labelenumi}{WLFA \textbf{\theenumi.}}
 \item Das Webinterface soll die Möglichkeit zur Registrierung, Anmeldung und Passwortwiederherstellung bereitstellen.
 \item Die Karte mit den aktuellen Positionen der Roboter soll angezeigt werden.
 \item Die Ziele sind mit der Maus auf der Karte auszuwählen.
@@ -103,11 +108,11 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 
 \subsection{Anforderungen an den Roboter}
 \begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{NFA \textbf{\theenumi.}}
+\renewcommand{\labelenumi}{RNFA \textbf{\theenumi.}}
 \item Der Roboter muss an alle Vorgegebenen Positionen autonom navigieren können.
 \item Der Roboter muss eine Vorrichtung zur Aufnahme des Gutes haben.
 \item Der Roboter muss einen Schalter zur bestätigung der Gutaufnahme und Gutetnahme haben.
-\item[WFA \textbf{\theenumi.}] Der Roboter muss selbstständig ein Gut aufnehmen und plazieren können.
+\item[RWNFA \textbf{\theenumi.}] Der Roboter muss selbstständig ein Gut aufnehmen und plazieren können.
 \end{enumerate}
 
 \subsection{Funktionale Anforderungen}
