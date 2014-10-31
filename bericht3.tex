@@ -115,40 +115,14 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 \item[RWNFA \textbf{\theenumi.}] Der Roboter muss selbstständig ein Gut aufnehmen und plazieren können.
 \end{enumerate}
 
-\subsection{Funktionale Anforderungen}
+\subsection{Anforderungen an die physikalische Umgebung}
 \begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{LFA \textbf{\theenumi.}}
-%\begin{compactenum}
-\item Ein neuer Benutzer soll sich registrieren können.
-\item Ein Benutzer kann ein Gut an eine Position bestellen.
-\item Die Karte Zeigt die aktuelle Position der Roboter an.
-\item Der Status der Roboter wird angezeigt.
-\item Die Zielräume sind auf der Karte per Maus auswählbar.
-\item Die Güter sind via Drop-Down Menü oder  Katalog auswählbar.
-\item Das Auftragsmanagement enthält eine Vorrangwarteschlange. 
-\item Es wird eine reduzierte Warteschlange der Aufträge angezeigt.
-\item Es soll verschiedene Prioritäten für Benutzer geben.
-\item Ein Administrator kann die Priorität der Benutzer ändern.
-\item Wird das Gut ausgeliefert oder es tritt ein Fehler auf erscheint ein Feedback.
-\item Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.
-\item Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.
-\item Wird das Gut nicht benötigt, wird es zurück gebracht.
-\item Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.
-\item Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.
+\renewcommand{\labelenumi}{ENFA \textbf{\theenumi.}}
+\item Der Bodenbelag muss mit dem Roboter befahrbar sein.
+\item Jeder zu befahrende weg muss eine Durchfahrtsbreite von midesten 0.9m aufweisen.
+\item Die Umgebung darf nur einstöckig sein.
 \end{enumerate}
-%\end{compactenum}
-\subsection{Nichtfunktionale Anforderungen}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{NFA \textbf{\theenumi.}}
-\item Das System wird für ROS (Robot Operating System) Implementiert.
-\item Ein Auftrag kann die Zustände Wartend, Ausführend oder Abgebrochen haben.
-\item Die Umgebung und die Karte dürfen nur einstöckig sein.
-\item Die Webseite muss auf modernen Smartphones und PCs funktionieren.
-\item Auf die Verfügbarkeit der Produkte muss nicht geachtet werden.
-\item Die Koordinaten der Räume und Aufnahmepositionen werden manuell definiert.
-\item Der Roboter muss die Produkte aufnehmen können (automatisch oder manuell)
-\item Der Roboter muss eine erfolgreiche Auslieferung erkennen können. (manuell)
-\end{enumerate}
+
 
 
 

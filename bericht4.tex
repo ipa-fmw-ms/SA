@@ -1,0 +1,53 @@
+%###########################################################################
+%
+%   Kapitel X
+%
+%###########################################################################
+\chapter{Architektur} \label{Kap:4}
+
+
+%###########################################################################
+%   Kapitel 2.1
+%###########################################################################
+
+\section{Komponentendiagram}
+
+\begin{figure}[!ht]
+\begin{tikzpicture}
+\begin{umlcomponent}{Server}
+  \begin{umlcomponent}[x=6] {Webdienst}
+    \umlbasiccomponent{HTML}
+    %\umlprovidedinterface [interface=HTML-interface,with port]{HTML}
+    \umlbasiccomponent[y=-2.5]{Javascript}
+  \end{umlcomponent}
+  \begin{umlcomponent} [x=3,y=-6.5]{Warteschlange}
+    \umlmulti [class=A]{Aufträge}
+  \end{umlcomponent}
+  \umldatabase [class=User, fill=blue!20, x=1.5,y=-0.5]{DB}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=15,y=-5.5]{Roboter}
+ \umlbasiccomponent{ROS}
+\end{umlcomponent}
+
+\begin{umlcomponent}[x=15,y=1]{User Device}
+ \umlbasiccomponent{Browser}
+ %\umlrequiredinterface [interface=Browser-interface,with port]{Browser}
+\end{umlcomponent}
+
+\umlassemblyconnector[interface=ROS,stereo=action,pos stereo=0.7]{Aufträge}{ROS}
+\umlassemblyconnector[interface=HTTP]{Browser}{HTML}
+%\umldelegateconnector {HTML-interface}{Browser-interface}
+\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.3] {Javascript}{Browser}
+
+\umlassoc {DB}{HTML}
+
+%\umlnote[x=11,y=-3]{WS-interface}{Map and States}
+
+\end{tikzpicture}
+\caption{Architekturbild}
+\label{fig:Architekturbild}
+\end{figure}
+
+
+
