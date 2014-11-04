@@ -27,13 +27,13 @@ Wählt Zielort aus & & \\
 \hline
 Gibt Bestellung auf & & Nimmt Bestellung an\\
 \hline
-Wartet auf Gut & & erstellt Auftrag in Warteschlange\\
+Sieht den Auftrag in der Warteschlange & & erstellt Auftrag in Warteschlange\\
 \hline
-& Beendet letzten Auftrag & Übermittelt nächsten Auftrag von der Warteschalange\\
+Wartet& Beendet letzten Auftrag & Übermittelt nächsten Auftrag von der Warteschlange\\
 \hline
-& Fährt Aufnahmeposition an &\\
+Erhält Starmeldung& Fährt Aufnahmeposition an & Benachrichtigt User über Start\\
 \hline
-& Nimmt Gut auf &\\
+Wartet auf den Roboter & Nimmt Gut auf &\\
 \hline
 & Navigiert zum Ziel &\\
 \hline
@@ -41,7 +41,7 @@ Wartet auf Gut & & erstellt Auftrag in Warteschlange\\
 \hline
 Nimmt Gut entgegen & Übergibt Gut & \\
 \hline
-Bestätigt Erhalt & Übermittelt Auftragsergebnis & Vergibt neuen Auftrag\\
+Bestätigt Erhalt & Übermittelt Auftragsergebnis & Löscht Auftrag,speichert Ergebnis und sendet nächsten Auftrag\\
 \end{tabular}
 \caption{User-Story für den Bestellvorgang}
 \label{fig:user-story}
@@ -88,9 +88,10 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 \item Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.
 \item Wird keine Lieferposition erreicht, wird der Auftrag abgebrochen.
 \item Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.
-\item[WAFA \textbf{\theenumi.}]Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.
 \item Wird das Gut nicht benötigt, wird es zurück gebracht.
 \item Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.
+\item[WAFA \textbf{\theenumi.}]Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.
+
 \end{enumerate}
 
 \subsection{Anforderungen an das Webinterface}
