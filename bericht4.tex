@@ -10,7 +10,7 @@
 %   Kapitel 2.1
 %###########################################################################
 
-\section{Komponentendiagram}
+\section{Komponentendiagram für einen Roboter}
 
 \begin{figure}[!ht]
 \begin{tikzpicture}
@@ -21,9 +21,9 @@
     \umlbasiccomponent[y=-2.5]{Javascript}
   \end{umlcomponent}
   \begin{umlcomponent} [x=3,y=-6.5]{Warteschlange}
-    \umlmulti [class=A]{Aufträge}
+    \umlemptyclass {Aufträge}
   \end{umlcomponent}
-  \umldatabase [class=User, fill=blue!20, x=1.5,y=-0.5]{DB}
+  %\umldatabase [class=User, fill=blue!20, x=1.5,y=-0.5]{DB}
 \end{umlcomponent}
 
 \begin{umlcomponent}[x=15,y=-5.5]{Roboter}
@@ -35,19 +35,48 @@
  %\umlrequiredinterface [interface=Browser-interface,with port]{Browser}
 \end{umlcomponent}
 
-\umlassemblyconnector[interface=ROS,stereo=action,pos stereo=0.7]{Aufträge}{ROS}
+%\umlassemblyconnector[interface=ROS,stereo=action,pos stereo=0.7]{Aufträge}{ROS}
 \umlassemblyconnector[interface=HTTP]{Browser}{HTML}
 %\umldelegateconnector {HTML-interface}{Browser-interface}
-\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.3] {Javascript}{Browser}
+\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.7,with port] {Browser}{ROS}
 
-\umlassoc {DB}{HTML}
+%\umlassoc {DB}{HTML}
 
 %\umlnote[x=11,y=-3]{WS-interface}{Map and States}
 
 \end{tikzpicture}
 \caption{Architekturbild}
-\label{fig:Architekturbild}
+\label{fig:Architekturbild 1} 
 \end{figure}
+
+\section{Verwendeten Messages}
+\subsection{Vorhandenen Messages}
+Für die Übertragung der Roboterposition und den Kartendaten zur Darstellung auf der Website, wird auf die vom Roboter bereit gestellten Daten in Vorhandenen Message Format zugegriffen.
+
+\subsection{Neue Messages}
+Neben den vom Roboter bereit gestellten Messages muss eine neue Action-Message für die einzelnen Aufträge erstellt und generiert werden,
+Diese enthält alle nötigen Informationen für die Auftragsabwicklung und gibt den Fortschritt und das Ergebnis.
+Da Die Prioritäten bereits in der Warteschlange berücksichtigt wurden, werden sie nicht an den Roboter Übertragen.
+Der Roboter bekommt in diesem Messageformat Das Ziel, so wie seine mögliche Alternative, und die Bezeichnung des zu liefernden Gutes.
+Während der Lieferung gibt der Roboter im Feedback das aktuelle Vorhaben zurück.
+Ist der Auftrag abgebrochen oder erfolgreich, erhält das Auftragsmanagment die Entsprechende Antwort,
+und im Falle eines Fehlers den Status des letzten Vorhabens, sowie die zugehörige Fehlermeldung
+\begin{msgs}[caption={delivery.action Message}]
+#goal
+move_base_simple/goal Pos1
+move_base_simple/goal Pos2
+string item
+---
+#result
+std_msg/bool success
+string Error
+int state
+---
+#feedback
+#1=goToGood 2=waitForGood 3=Move1 4=Move2 5=waitForReceive
+int state
+move_base/feedback position
+\end{msgs}
 
 
 

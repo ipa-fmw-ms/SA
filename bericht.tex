@@ -35,6 +35,11 @@
 \newcommand{\Title}{Studentische Arbeit}
 \newcommand{\Subject}{Entwicklung einer Webapplikation zur automatischen Verteilung von Gütern}
 \newcommand{\Keywords}{ROS, Logistik, rocon, Servicrobotik}
+
+\usepackage{nameref}
+\makeatletter
+\newcommand*{\currentname}{\@currentlabelname}
+\makeatother
 % UML
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} %erlaubt umlaute
@@ -47,8 +52,14 @@
 \usepackage[section]{placeins}%doppelt?
 \usepackage{placeins}
 
-
-%\usepackage{titling} %crap
+%code style for msgs
+\lstnewenvironment{msgs}[1][]%to main if  it works
+{%keep Messages together
+   \noindent
+   \minipage{\linewidth} 
+   \vspace{0.5\baselineskip}
+   \lstset{basicstyle=\ttfamily\footnotesize,frame=single,#1}}
+{\endminipage}
 
 % Hyperlinks
 \usepackage[bookmarksnumbered=true,backref=page,breaklinks=true,
@@ -264,8 +275,8 @@ pdfkeywords={\Keywords}]{hyperref}
 \thispagestyle{empty}\cleardoublepage
 
 % Eidesstattliche Erklärung einfügen
-\include{berichterkl}
-\thispagestyle{empty}\cleardoublepage
+%\include{berichterkl}
+%\thispagestyle{empty}\cleardoublepage
 
 % Vorwort einfügen
 \include{berichtvor}
@@ -292,7 +303,7 @@ pdfkeywords={\Keywords}]{hyperref}
 \include{berichtlot} % Tabellenverzeichnis einfügen
 %\thispagestyle{empty}\cleardoublepage
 
-% Literaturverzeichnis einfügen
+% Literaturverzeichnis einfügenArchitekturbild 1
 \phantomsection
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
 %\include{berichtbib_alt}
