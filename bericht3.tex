@@ -71,58 +71,69 @@ Aus dem Anwendungsfalldiagram und der Ablaufliste, werden für jede einzelne Kom
 Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfüllung der wesentlichen Aufgabe benötigt werden, jedoch den grad der Automatsierung erhöhen.% könnten.
 
 \subsection{Anforderungen an das User Managment}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{ULFA \textbf{\theenumi.}}
-\item Ein neuer User Soll sich registrieren und löschen können.
-\item Ein Administrator soll die Prioritäten der User verändern können.
-%\item Die Priorität der User beeinflusst die Abarbeitung der Warteschlange. (noch festzulegen)
-\item[WFA \textbf{\theenumi.}] Der User kann eine default Lieferposition mit Alternativposition festlegen.
-\end{enumerate}
+\setcounter{rowno}{0}
+\begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
+\multicolumn{1}{r}{UM} && Anforderung & F & P \\
+\hline
+&& Ein neuer User Soll sich registrieren und löschen können. & F & R \\
+&& Ein Administrator soll die Prioritäten der User verändern können. & F & R \\
+&& Der User kann eine default Lieferposition mit Alternativposition festlegen. & F & W \\
+\end{tabular}
 
 \subsection{Anforderungen an das Auftragsmanagement}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{ALFA \textbf{\theenumi.}}
-\item Ein User kann ein gut an eine Position bestellen.
-\item Ein Auftrag kann die Zustände Wartend Ausführend oder Abgebrochen haben.
-\item Die Priorität der User beeinflusst die Abarbeitung der Warteschlange. (noch festzulegen)
-\item Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.
-\item Wird keine Lieferposition erreicht, wird der Auftrag abgebrochen.
-\item Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.
-\item Wird das Gut nicht benötigt, wird es zurück gebracht.
-\item Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.
-\item[WAFA \textbf{\theenumi.}]Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.
-
-\end{enumerate}
+%\newcounter{rowno}
+\setcounter{rowno}{0}
+\begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
+\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\hline
+&& Ein User kann ein gut an eine Position bestellen.&F&R \\
+%& Ein Auftrag kann die Zustände Wartend Ausführend oder Abgebrochen haben.&F&R \\
+&& Die Priorität der User beeinflusst die Abarbeitung der Warteschlange.(NotYet)&F&R \\
+&& Wird die Lieferposition nicht erreicht, kann es eine alternative zu ihr geben.&F&R \\
+&& Wird keine Lieferposition erreicht, wird der Auftrag abgebrochen.&F&R\\
+&& Ist ein Auftrag abgebrochen wird mit dem Nächsten fortgefahren.&F&R\\
+&& Wird das Gut nicht benötigt, wird es zurück gebracht.&F&R\\
+&& Gibt es keine Aufträge mehr soll der Roboter zu einer Home-Position fahren.&F&R\\
+&& Kann das Gut nicht ausgeliefert werden, erhält der nächste Besteller dieses.&F&W\\
+\end{tabular}
 
 \subsection{Anforderungen an das Webinterface}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{WLFA \textbf{\theenumi.}}
-\item Das Webinterface soll die Möglichkeit zur Registrierung, Anmeldung und Passwortwiederherstellung bereitstellen.
-\item Die Karte mit den aktuellen Positionen der Roboter soll angezeigt werden.
-\item Die Ziele sind mit der Maus auf der Karte auszuwählen.
-\item Die Produkte sind in einem Drop-Down Menu auswählbar.
-\item Sind keine Roboter ordnungsgemäß(Not-Aus betätigt, Komponenten fehlen)  verfügbar, soll eine Fehlermeldung angezeigt werden.
-\item Es soll eine reduzierte Version der Warteschlange angezeigt werden.(Ohne Ziele und Güter)
-\item Wird der Auftrag ausgeführt Abgebrochen oder Pausiert, soll eine Visuelle oder Akustische Benachrichtigung erfolgen.
-\item[WFA \textbf{\theenumi.}] Die Zeitprognose für die Lieferung soll angezeigt werden.
-\end{enumerate}
+%\newcounter{rowno}
+\setcounter{rowno}{0}
+\begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
+\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\hline
+&& Das Webinterface soll die Möglichkeit zur Registrierung, Anmeldung und Passwortwiederherstellung bereitstellen.&F&R \\
+&& Die Karte mit den aktuellen Positionen der Roboter soll angezeigt werden.&F&R \\
+&& Die Ziele sind mit der Maus auf der Karte auszuwählen.&F&R \\
+&& Die Produkte sind in einem Drop-Down Menu auswählbar.&F&R \\
+&& Sind keine Roboter ordnungsgemäß(Not-Aus betätigt, Komponenten fehlen)  verfügbar, soll eine Fehlermeldung angezeigt werden.&F&R \\
+&& Es soll eine reduzierte Version der Warteschlange angezeigt werden.(Ohne Ziele und Güter)&F&R \\
+&& Wird der Auftrag ausgeführt Abgebrochen oder Pausiert, soll eine Visuelle oder Akustische Benachrichtigung erfolgen.&F&R \\
+&& Die Zeitprognose für die Lieferung soll angezeigt werden.&F&W \\
+\end{tabular}
 
 \subsection{Anforderungen an den Roboter}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{RNFA \textbf{\theenumi.}}
-\item Der Roboter muss an alle Vorgegebenen Positionen autonom navigieren können.
-\item Der Roboter muss eine Vorrichtung zur Aufnahme des Gutes haben.
-\item Der Roboter muss einen Schalter zur bestätigung der Gutaufnahme und Gutetnahme haben.
-\item[RWNFA \textbf{\theenumi.}] Der Roboter muss selbstständig ein Gut aufnehmen und plazieren können.
-\end{enumerate}
+\setcounter{rowno}{0}
+\begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
+\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\hline
+&& Der Roboter muss an alle Vorgegebenen Positionen autonom navigieren können.&F&R \\
+&& Der Roboter muss eine Vorrichtung zur Aufnahme des Gutes haben.&F&R \\
+&& Der Roboter muss einen Schalter zur bestätigung der Gutaufnahme und Gutentnahme haben.&F&R \\
+&& Der Roboter muss selbstständig ein Gut aufnehmen und plazieren können.&F&W \\
+\end{tabular}
 
 \subsection{Anforderungen an die physikalische Umgebung}
-\begin{enumerate}[nosep,style=sameline]
-\renewcommand{\labelenumi}{ENFA \textbf{\theenumi.}}
-\item Der Bodenbelag muss mit dem Roboter befahrbar sein.
-\item Jeder zu befahrende weg muss eine Durchfahrtsbreite von midesten 0.9m aufweisen.
-\item Die Umgebung darf nur einstöckig sein.
-\end{enumerate}
+\setcounter{rowno}{0}
+\begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
+\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\hline
+&& Der Bodenbelag muss mit dem Roboter befahrbar sein.&N&R \\
+&& Jeder zu befahrende weg muss eine Durchfahrtsbreite von mindesten 0.9m aufweisen.&N&R \\
+&& Die Durchfahrtshöhe für den Roboter muss mindestens 1.6m aufweisen.&N&R \\
+&& Die Umgebung darf nur einstöckig sein.&N&R \\
+\end{tabular}
 
 
 

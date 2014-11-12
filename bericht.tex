@@ -36,10 +36,14 @@
 \newcommand{\Subject}{Entwicklung einer Webapplikation zur automatischen Verteilung von Gütern}
 \newcommand{\Keywords}{ROS, Logistik, rocon, Servicrobotik}
 
+%get chapter (not in use)
 \usepackage{nameref}
-\makeatletter
+\makeatletter 
 \newcommand*{\currentname}{\@currentlabelname}
 \makeatother
+%numerate tables
+\usepackage{array}
+\newcounter{rowno}%zähler für zeilen
 % UML
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc} %erlaubt umlaute

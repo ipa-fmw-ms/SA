@@ -20,13 +20,13 @@
     %\umlprovidedinterface [interface=HTML-interface,with port]{HTML}
     \umlbasiccomponent[y=-2.5]{Javascript}
   \end{umlcomponent}
-  \begin{umlcomponent} [x=3,y=-6.5]{Warteschlange}
+  \begin{umlcomponent} [x=3,y=-6.0]{Warteschlange}
     \umlemptyclass {Aufträge}
   \end{umlcomponent}
   %\umldatabase [class=User, fill=blue!20, x=1.5,y=-0.5]{DB}
 \end{umlcomponent}
 
-\begin{umlcomponent}[x=15,y=-5.5]{Roboter}
+\begin{umlcomponent}[x=15,y=-4.0]{Roboter}
  \umlbasiccomponent{ROS}
 \end{umlcomponent}
 
@@ -37,8 +37,11 @@
 
 %\umlassemblyconnector[interface=ROS,stereo=action,pos stereo=0.7]{Aufträge}{ROS}
 \umlassemblyconnector[interface=HTTP]{Browser}{HTML}
+%\umlassemblyconnector {Javascript}{HTML}
 %\umldelegateconnector {HTML-interface}{Browser-interface}
-\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.7,with port] {Browser}{ROS}
+%\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.7,with port] {Browser}{ROS}
+\umlHVassemblyconnector[stereo=action,pos stereo=0.7,with port] {Aufträge}{ROS}
+
 
 %\umlassoc {DB}{HTML}
 
