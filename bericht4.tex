@@ -11,46 +11,59 @@
 %###########################################################################
 
 \section{Komponentendiagram für einen Roboter}
-
-\begin{figure}[!ht]
+Im folgenden Abschnitt wird das Architekturbild für einen Roboter erstellt
+\newpage
+\begin{sidewaysfigure}
+\centering
 \begin{tikzpicture}
+
 \begin{umlcomponent}{Server}
-  \begin{umlcomponent}[x=6] {Webdienst}
-    \umlbasiccomponent{HTML}
-    %\umlprovidedinterface [interface=HTML-interface,with port]{HTML}
-    \umlbasiccomponent[y=-2.5]{Javascript}
+  \begin{umlcomponent}[x=6] {Webserver}
+    \begin{umlcomponent}{HTML}
+    \umlbasiccomponent[y=-2.7]{Javascript}
+    \end{umlcomponent}
   \end{umlcomponent}
-  \begin{umlcomponent} [x=3,y=-6.0]{Warteschlange}
+  \begin{umlcomponent} [x=-0,y=-7.0]{Warteschlange}
     \umlemptyclass {Aufträge}
   \end{umlcomponent}
-  %\umldatabase [class=User, fill=blue!20, x=1.5,y=-0.5]{DB}
+  \umldatabase [class=User, fill=blue!20, x=2.0,y=-1.4]{DB1}
+  \umldatabase [class=Products, fill=green!20, x=2.0,y=-3.8]{DB2}
 \end{umlcomponent}
 
 \begin{umlcomponent}[x=15,y=-4.0]{Roboter}
- \umlbasiccomponent{ROS}
+ \umlbasiccomponent[x=0.0,y=-7]{Delivery}
+ \umlbasiccomponent[x=0.2,y=-4]{MapServer}
+ \umlbasiccomponent[x=0.2,y=-1]{navigation}
 \end{umlcomponent}
 
-\begin{umlcomponent}[x=15,y=1]{User Device}
+\begin{umlcomponent}[x=15,y=0]{User Device}
  \umlbasiccomponent{Browser}
- %\umlrequiredinterface [interface=Browser-interface,with port]{Browser}
 \end{umlcomponent}
 
-%\umlassemblyconnector[interface=ROS,stereo=action,pos stereo=0.7]{Aufträge}{ROS}
-\umlassemblyconnector[interface=HTTP]{Browser}{HTML}
-%\umlassemblyconnector {Javascript}{HTML}
-%\umldelegateconnector {HTML-interface}{Browser-interface}
-%\umlHVassemblyconnector[interface=rosbridge,stereo=topics,pos stereo=0.7,with port] {Browser}{ROS}
-\umlHVassemblyconnector[stereo=action,pos stereo=0.7,with port] {Aufträge}{ROS}
+\umlHVHassemblyconnector[interface=move\_base,with port,draw=green,fill=green,arm2=2cm,anchor1=0,anchor2=0]{Delivery}{navigation}
+\umlHVHassemblyconnector[interface=HTTP]{Browser}{HTML}
+\umlVHassemblyconnector[interface=delivery,draw=blue,with port]{Javascript}{Warteschlange}
+\umlVHassemblyconnector[interface=delivery,draw=green,fill assembly connector=green!20,fill port=green!20,with port]{Warteschlange}{Delivery}
+\umlassemblyconnector[interface=map,draw=red,with port]{Javascript}{MapServer}
+\umlassemblyconnector[interface=position,draw=red,with port]{Javascript}{navigation}
 
+\umlassoc {DB1}{HTML}
+\umlassoc {DB2}{HTML}
+\umlassoc {DB2}{Warteschlange}
 
-%\umlassoc {DB}{HTML}
+\umlnote[x=11,y=-9,width=2cm]{MapServer-west-port}{provides map topic}
+\umlnote[x=11,y=-12.5,width=3cm]{Delivery-west-port}{delivery Action Server}
+\umlnote[x=-0.2,y=-12.5,width=3cm]{Warteschlange-south-port}{delivery Action Client}
+\umlnote[x=4.2,y=-8.1,width=3cm]{Warteschlange-east-port}{delivery append service}
 
-%\umlnote[x=11,y=-3]{WS-interface}{Map and States}
+\umlnote[x=7.4,y=-7.6,width=2.0cm]{Javascript-east-port}{rosbridge websocket}
+\umlnote[x=7.4,y=-7.6,width=2.0cm]{Javascript-south-port}{rosbridge websocket}
 
-\end{tikzpicture}
-\caption{Architekturbild}
-\label{fig:Architekturbild 1} 
-\end{figure}
+ \end{tikzpicture}
+ \caption{Architekturbild}
+ \label{fig:Architekturbild 1}
+ \end{sidewaysfigure}
+ \newpage
 
 \section{Verwendeten Messages}
 \subsection{Vorhandenen Messages}

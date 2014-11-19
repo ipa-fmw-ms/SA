@@ -47,6 +47,58 @@ Bestätigt Erhalt & Übermittelt Auftragsergebnis & Löscht Auftrag,speichert Er
 \label{fig:user-story}
 \end{table}
 
+\tikzset{ 
+table/.style={
+  matrix of nodes,
+  row sep=-\pgflinewidth,
+  column sep=-\pgflinewidth,
+  nodes={rectangle,text width=3em,align=center},
+  text depth=1.25ex,
+  text height=2.5ex,
+  nodes in empty cells
+},
+row 1/.style={nodes={fill=green!10,text depth=0.4ex,text height=2ex}},
+row 6/.style={nodes={text depth=0.4ex,text height=2ex}},
+column 1/.style={nodes={fill=green!10}},
+}
+
+
+\begin{tikzpicture}
+% the matrix entries
+\matrix (mat) [table]
+{
+& $D_1$ & $D_2$ & $D_3$ & $D_4$ & foo \\
+$O_1$ & 50  & 0 & & & 50 \\
+$O_2$ & & 60 & & & 60 \\
+$O_3$ & & 10 & 30 & 10 & 50 \\
+$O_4$ & & & & 50 & 50 \\
+bar & 50 & 70 & 30 & 60 & 210 \\
+};
+% the matrix rules
+\foreach \x in {1,...,5}
+{
+  \draw 
+    ([xshift=-.5\pgflinewidth]mat-\x-1.south west) --   
+    ([xshift=-.5\pgflinewidth]mat-\x-6.south east);
+  }
+\foreach \x in {1,...,5}
+{
+  \draw 
+    ([yshift=.5\pgflinewidth]mat-1-\x.north east) -- 
+    ([yshift=.5\pgflinewidth]mat-6-\x.south east);
+}    
+% the arrows
+\begin{scope}[shorten >=7pt,shorten <= 7pt]
+\draw[->]  (mat-2-2.center) -- (mat-2-3.center);
+\draw[->]  (mat-2-3.center) -- (mat-3-3.center);
+\draw[->]  (mat-3-3.center) -- (mat-4-3.center);
+\draw[->]  (mat-4-3.center) -- (mat-4-4.center);
+\draw[->]  (mat-4-4.center) -- (mat-4-5.center);
+\draw[->]  (mat-4-5.center) -- (mat-5-5.center);
+\end{scope}
+\end{tikzpicture}
+
+
 \section{Use-Case}
 \begin{figure}[!ht]
 \begin{tikzpicture}
@@ -101,7 +153,7 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 %\newcounter{rowno}
 \setcounter{rowno}{0}
 \begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
-\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\multicolumn{1}{l}{WI} && Anforderung & F & P \\
 \hline
 && Das Webinterface soll die Möglichkeit zur Registrierung, Anmeldung und Passwortwiederherstellung bereitstellen.&F&R \\
 && Die Karte mit den aktuellen Positionen der Roboter soll angezeigt werden.&F&R \\
@@ -116,7 +168,7 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 \subsection{Anforderungen an den Roboter}
 \setcounter{rowno}{0}
 \begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
-\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\multicolumn{1}{l}{R} && Anforderung & F & P \\
 \hline
 && Der Roboter muss an alle Vorgegebenen Positionen autonom navigieren können.&F&R \\
 && Der Roboter muss eine Vorrichtung zur Aufnahme des Gutes haben.&F&R \\
@@ -127,7 +179,7 @@ Des weiteren werden Wunschanforderungen (WFA) definiert, welche nicht zur Erfül
 \subsection{Anforderungen an die physikalische Umgebung}
 \setcounter{rowno}{0}
 \begin{tabular}{>{\stepcounter{rowno}\therowno)}cl p{13cm}|cl}
-\multicolumn{1}{l}{AM} && Anforderung & F & P \\
+\multicolumn{1}{l}{ENV} && Anforderung & F & P \\
 \hline
 && Der Bodenbelag muss mit dem Roboter befahrbar sein.&N&R \\
 && Jeder zu befahrende weg muss eine Durchfahrtsbreite von mindesten 0.9m aufweisen.&N&R \\
